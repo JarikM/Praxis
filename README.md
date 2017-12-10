@@ -1,2 +1,2 @@
 # Praxis
-Practical test for WeAreBrain company
+Practical test for Brains Agency company
