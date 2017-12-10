@@ -46,6 +46,7 @@ public class PraxisLoginPage extends AbstractPage {
     }
 
     public PraxisMyProfilePage login(String emailAddress, String password) {
+        Logger.STEP("Logging");
         setEmailAdress(emailAddress);
         setPassword(password);
         clickLoginButton();
