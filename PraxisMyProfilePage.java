@@ -15,6 +15,7 @@ public class PraxisMyProfilePage extends AbstractPage {
     private static final By WELCOME_USER_TEXT_LOCATOR = By.xpath("//span[@data-reactid='110']");
     private static final By CHANGE_EMAIL_CONFIRMATION_TEXT_LOCATOR = By.xpath("//*[@data-reactid='132' and @class='mxd-grid']/div[@class='mxd-notification mxd-notification-success mxd-icon mxd-icon-info']/div");
     private static final By CHANGE_PASSWORD_CONFIRMATION_TEXT_LOCATOR = By.xpath("//*[@data-reactid='160' and @class='mxd-grid']/div[@class='mxd-notification mxd-notification-success mxd-icon mxd-icon-info']/div");
+    private static final By LOGOUT_BUTTON_LOCATOR = By.xpath("");
 
     public PraxisMyProfilePage() {
         url = "https://www.acc.praxis.nl/voordemakers/myprofile/edit";
@@ -27,17 +28,17 @@ public class PraxisMyProfilePage extends AbstractPage {
     }
 
     public String getUserWelcomeText() {
-        Logger.ACTION(PAGE_NAME + "Get User's welcome text");
+        Logger.STEP(PAGE_NAME + "Get User's welcome text");
         return getText(WELCOME_USER_TEXT_LOCATOR).getText(3);
     }
 
     public String getChangeEmailConfirmationText() {
-        Logger.ACTION(PAGE_NAME + "Get confirmation text after email was changed");
+        Logger.STEP(PAGE_NAME + "Get confirmation text after email was changed");
         return getText(CHANGE_EMAIL_CONFIRMATION_TEXT_LOCATOR).getText(3);
     }
 
     public String getChangePasswordConfirmationText() {
-        Logger.ACTION(PAGE_NAME + "Get confirmation text after password was changed");
+        Logger.STEP(PAGE_NAME + "Get confirmation text after password was changed");
         return getText(CHANGE_PASSWORD_CONFIRMATION_TEXT_LOCATOR).getText(3);
     }
 
@@ -79,5 +80,11 @@ public class PraxisMyProfilePage extends AbstractPage {
         Logger.ACTION(PAGE_NAME + "Clicking the Update Password button");
         getButton(UPDATE_PASSWORD_BUTTON_LOCATOR).waitForClickableAndClick(3);
         return this;
+    }
+
+    public PraxisHomePage logout() {
+        Logger.STEP(PAGE_NAME + "Logging out");
+        getButton(LOGOUT_BUTTON_LOCATOR).waitForClickableAndClick(3);
+        return new PraxisHomePage();
     }
 }
